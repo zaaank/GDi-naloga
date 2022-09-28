@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="zip\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="zip\" />
+  </ItemGroup>
 </Project>
