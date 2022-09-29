@@ -1,5 +1,6 @@
 ﻿using System.IO.Compression;
 using System.Net;
+using Newtonsoft.Json.Linq;
 
 string zipFilePath = "FILE1.zip";
 WebClient webClient = new WebClient();
@@ -12,3 +13,7 @@ try
 catch
 {
 }
+
+JObject o1 = JObject.Parse(File.ReadAllText(@"../../../zip/DURS_zavezanci_PO.txt"));
+
+Console.WriteLine(o1);
