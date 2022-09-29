@@ -1,8 +1,0 @@
-n = int(input("Kako dolg naj bo vrcek: \n")) stars = '*****' end = '|__' start = '|——' spaces = '   '
-
-def ZakljucekVrcka():     print(end + stars)     print(spaces + stars)
-
-def ZacetekVrcka():     print(start + stars)      def SredinaVrcka():     for row in range(1,n-2):         print("|  " + stars)
-
-def NarisiVrcek():     ZacetekVrcka();     SredinaVrcka();     ZakljucekVrcka();          NarisiVrcek();
-
