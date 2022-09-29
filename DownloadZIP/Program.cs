@@ -1,4 +1,6 @@
-﻿using System.IO.Compression;
+﻿
+using System.IO.Compression;
+using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using DownloadZIP;
@@ -20,16 +22,25 @@ var fileReading = File.ReadAllText(@"../../../zip/DURS_zavezanci_PO.txt");
 
 var lines = fileReading.Split("\n"); //split by lines
 
-Zavezanec[] zavezanci;
+List<Zavezanec> zavezanci = new List<Zavezanec>();
 
 Zavezanec lineToObject;
 
+var id = 0;
+string[] array;
 foreach (var line in lines)
 {
-    lineToObject = new Zavezanec(id: 0, status: "sad", number1: "gh", number2: "gh", date: "gh", amount: "gh", companyName: "gh", address: "gh", rating: "gh");
+    if (line != "")
+    {
+        lineToObject = new Zavezanec(id: id, status: line.Substring(0, 4), number1: line.Substring(4, 9), number2: line.Substring(13, 11), date: line.Substring(24, 11), amount: line.Substring(35, 7), companyName: line.Substring(42, 101), address: line.Substring(143, 114), rating: line.Substring(257));
+        zavezanci.Add(lineToObject);
+        id++;
+    }
 }
 
-//Console.WriteLine(fileReading);
+File.Delete(@"../../../zip/DURS_zavezanci_PO.txt");
+
+Console.WriteLine(zavezanci);
 
 
 
